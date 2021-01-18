@@ -23,14 +23,11 @@ function setup(){
 
 function draw(){
 
-    background("white");
-
     if(playerCount == 4){
         game.update(1);
     }
     if(gameState == 1){
+        clear();
         game.play();
     }
-
-    drawSprites();
 }
