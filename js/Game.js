@@ -36,6 +36,9 @@ class Game {
   play(){
      form.hide();
      Player.getPlayerInfo();
+
+     player.getCarsAtEnd();
+
      if(allPlayers !== undefined){
         background("#474747");
         image(track, 0, -displayHeight*4, displayWidth, displayHeight*5);
@@ -64,6 +67,13 @@ class Game {
      }
      if(player.distance > 4200){
         gameState = 2;
+        player.rank = player.rank + 1;
+        Player.updateCarsAtEnd(player.rank);
+        
+        textSize(40)
+        fill("White")
+        stroke(15)
+        text ("Your Rank: " + player.rank, displayWidth/2 - 50, y - 5);
      }
      drawSprites();
   }

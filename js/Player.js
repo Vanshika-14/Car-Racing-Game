@@ -3,6 +3,7 @@ class Player{
       this.index = null;
       this.distance = 0;
       this.name = null;
+      this.rank = null;
    }
    getCount(){
       var playerCountRef = database.ref('playerCount');
@@ -28,5 +29,17 @@ class Player{
    playerInfoRef.on("value", (data)=> {
       allPlayers = data.val();
    });
+  }
+
+  getCarsAtEnd(){
+   database.ref('carsAtEnd').on("value", (data) => {
+      this.rank = data.val();
+   })
+  }
+
+  static updateCarsAtEnd(rank){
+     database.ref('/').update({
+        carsAtEnd:rank
+     });
   }
 }
